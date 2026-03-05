@@ -1,5 +1,10 @@
 <?php
 
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +41,34 @@ Route::group(['middleware'=>'auth'], function(){
 
 });
 
+Route::get('sitemap', function() {
+    $sitemap = Sitemap::create();
+
+        $sitemap = $sitemap
+            ->add(Url::create(route('promo'))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY))
+            ->add(Url::create(route('home'))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY))
+            ->add(Url::create(route('productions'))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY))
+            ->add(Url::create(route('invoices'))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY))
+            ->add(Url::create(route('prices'))
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY));
+
+    $sitemap->writeToFile(public_path("sitemap.xml"));
+
+    return redirect()->route('promo');
+
+});
+
+Route::post('/', function(Request $request) {
+    if ($request->has('id') && $request->has('lat') && $request->has('lon')) {
+        \Illuminate\Support\Facades\Log::debug('/: method: ' . $request->method() . ', fullUrl: ' . $request->fullUrl() . ', params: ' . print_r($request->all(), true));
+    }
+});

@@ -54,7 +54,7 @@
                 <!-- Превью-изображения макетов-->
                 <div class='carousel-buttons col-sm-2 hidden-xs carousel-buttons-right'>
                     @foreach($makets_items as $maket)
-                        <img src={{ $maket }} alt="макет" class="slide-one" value="{{$loop->iteration}}" onclick="$('#MaketsCarousel').carousel({{$loop->index}})">
+                        <img src={{ asset($maket) }} alt="макет" class="slide-one" value="{{$loop->iteration}}" onclick="$('#MaketsCarousel').carousel({{$loop->index}})">
                     @endforeach
                 </div>
 
@@ -66,7 +66,7 @@
                         <div class="carousel-inner">
                             @foreach($makets_items as $maket)
                                 <div class="{{$loop->index==0 ? 'item active':'item'}}">
-                                    <img src={{ $maket }} alt="Макет" class="img-maket center-block">
+                                    <img src={{ asset($maket) }} alt="Макет" class="img-maket center-block" style="max-height: 60vh; width: auto">
                                 </div>
                             @endforeach
                         </div>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127727650-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-127727650-2');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -11,8 +21,8 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon"/>
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet">
@@ -35,7 +45,7 @@
             </button>
             <!-- Бренд или название сайта (отображается в левой части меню) -->
             <a class="navbar-brand" href="/">
-                <img src="img/topnav_logo.png" height="36" alt="Название бренда или сайта">
+                <img src="{{ asset('img/topnav_logo.png') }}" height="36" alt="Название бренда или сайта">
             </a>
             <!-- информация для мобильного экрана -->
             <p class="visible-xs navbar-text text-center" style="margin-left:0px; margin-right:0px">доставка: ~</p>

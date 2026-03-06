@@ -1,78 +1,84 @@
 <!doctype html>
 <html>
+
 <head>
-	<meta charset="windows-1251">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<!-- версия для разработки, включает отображение полезных предупреждений в консоли -->
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <meta charset="windows-1251">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
-<div id="app">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <p class="text-center">Задай свой душетрепещущий вопрос:</p>
-        <p><input v-model="question" style="width: 100%"></p>
-        <div class="col-3"></div>
-        <p class="text-center">{{ answer }}</p>
-        <p></p>
-        <p><img v-bind:src="answer_src" width="100%"></p>
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:</p>
+          <p><input v-model="question" style="width: 100%"></p>
+          <div class="col-3"></div>
+          <p class="text-center">{{ answer }}</p>
+          <p></p>
+          <p><img v-bind:src="answer_src" width="100%"></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-var vue = new Vue({
-  el: '#app',
-  data: {
-    question: '',
-    answer: 'Пока ты не задашь вопрос, я не могу ответить!',
-    answer_src: ''
-  },
-  watch: {
-    // эта функция запускается при любом изменении вопроса
-    question: function (newQuestion, oldQuestion) {
-      this.answer = 'Ожидаю, когда ты закончишь печатать...'
-      this.answer_src = ""
-      this.debouncedGetAnswer()
-    }
-  },
-  created: function () {
-    // _.debounce — это функция из lodash, позволяющая ограничить
-    // то, насколько часто может выполняться определённая операция.
-    // В данном случае мы хотим ограничить частоту обращений к yesno.wtf/api,
-    // дожидаясь завершения печати вопроса перед тем как послать ajax-запрос.
-    // Чтобы узнать больше о функции _.debounce (и её родственнице _.throttle),
-    // см. документацию: https://lodash.com/docs#debounce
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 1500)
-  },
-  methods: {
-    getAnswer: function () {
-      if (this.question.indexOf('?') === -1) {
-        this.answer = 'Вопросы обычно заканчиваются вопросительным знаком ;-)'
-        return
+  <script>
+    var vue = new Vue({
+      el: '#app',
+      data: {
+        question: '',
+        answer: 'пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!',
+        answer_src: ''
+      },
+      watch: {
+        // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        question: function (newQuestion, oldQuestion) {
+          this.answer = 'пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...'
+          this.answer_src = ""
+          this.debouncedGetAnswer()
+        }
+      },
+      created: function () {
+        // _.debounce пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ lodash, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        // пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ yesno.wtf/api,
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ajax-пїЅпїЅпїЅпїЅпїЅпїЅ.
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ _.debounce (пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ _.throttle),
+        // пїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: https://lodash.com/docs#debounce
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 1500)
+      },
+      methods: {
+        getAnswer: function () {
+          if (this.question.indexOf('?') === -1) {
+            this.answer = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ;-)'
+            return
+          }
+          this.answer = 'пїЅпїЅпїЅпїЅпїЅ...'
+          vm = this
+          axios.get('https://yesno.wtf/api')
+            .then(function (response) {
+              vm.answer = _.capitalize(response.data.answer)
+              vm.answer_src = _.capitalize(response.data.image)
+            })
+            .catch(function (error) {
+              vm.answer = 'пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ API. ' + error
+              vm.answer_src = ""
+
+            })
+        }
       }
-      this.answer = 'Думаю...'
-      vm = this
-      axios.get('https://yesno.wtf/api')
-        .then(function (response) {
-          vm.answer = _.capitalize(response.data.answer)
-          vm.answer_src = _.capitalize(response.data.image)
-        })
-        .catch(function (error) {
-          vm.answer = 'Ошибка! Не могу связаться с API. ' + error
-          vm.answer_src = ""
 
-        })
-    }
-  }
-
-})
-</script>
+    })
+  </script>
 
 </body>
+
 </html>

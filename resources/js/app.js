@@ -11,9 +11,21 @@
 
 import './bootstrap';
 
-import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle';
 
-import Vue from 'vue';
+import $ from 'jquery';
+
+window.$ = $;
+window.jQuery = $;
+
+// Bootstrap 3 JS
+import 'bootstrap';
+
+// Тест
+console.log('VITE WORKS 🚀');
+console.log('jQuery version:', window.$?.fn?.jquery);
+
+import Vue from 'vue/dist/vue.esm.js';
 
 import Example from './components/Example.vue'
 

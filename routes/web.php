@@ -72,3 +72,7 @@ Route::post('/', function(Request $request) {
         \Illuminate\Support\Facades\Log::debug('/: method: ' . $request->method() . ', fullUrl: ' . $request->fullUrl() . ', params: ' . print_r($request->all(), true));
     }
 });
+
+Auth::routes();
+
+Route::get('/home', [Grafit\Http\Controllers\HomeController::class, 'index'])->name('home');

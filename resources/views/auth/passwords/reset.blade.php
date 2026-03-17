@@ -1,60 +1,65 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
-        <div class = "row">
-            <div class = "col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                <h3>Сброс пароля</h3><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ __('Reset Password') }}</div>
 
-                {!! Form::open(['route' => 'password.request', 'class' => 'form-horizontal']) !!}
-                    {{ Form::hidden('token', $token) }}
+                <div class="panel-body">
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
 
-                    <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                        {{ Form::label('email', 'E-mail', ['class' => 'control-label col-md-3']) }}
-                        <div class = "col-md-6">
-                            {{ Form::email('email', $email or old('email'), ['class' => 'form-control', 'required', 'autofocus']) }}
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                        <input type="hidden" name="token" value="{{ $token }}">
 
-                    <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                        {{ Form::label('password', 'Новый пароль', ['class' => 'control-label col-md-3']) }}
-                        <div class = "col-md-6">
-                            {{ Form::password('password', ['class' => 'form-control', 'required']) }}
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                    <div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                        {{ Form::label('password_confirmation', 'Подтверждение пароля', ['class' => 'control-label col-md-3']) }}
-                        <div class = "col-md-6">
-                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required']) }}
-                            @if ($errors->has('password_confirmation'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                            @endif
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class = "col-md-4 col-md-offset-3">
-                            {{ Form::submit('Изменить пароль', ['class' => 'form-control btn btn-primary btn-block']) }}
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                {!! Form::close() !!}
 
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Reset Password') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

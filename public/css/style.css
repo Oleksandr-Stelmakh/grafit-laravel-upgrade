@@ -1,10 +1,14 @@
 html {
-    position: relative; /*для футера*/
-    min-height: 100%; /*для футера*/
+    position: relative;
+    /*для футера*/
+    min-height: 100%;
+    /*для футера*/
 }
 
 body {
-    margin-bottom: 145px; /*для футера*/;
+    margin-bottom: 145px;
+    /*для футера*/
+    ;
     color: black;
     background-color: white;
     font-family: Arial, sans-serif;
@@ -14,7 +18,7 @@ body {
     margin-bottom: 10px;
 }
 
-.table > thead > tr > th {
+.table>thead>tr>th {
     vertical-align: middle;
 }
 
@@ -33,18 +37,25 @@ body {
     border-radius: 0px;
 }
 
+/* .main-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+} */
+
 .navbar
 /*****************************/
 
-    /* Высота меню */
+/* Высота меню */
 .navbar {
     min-height: 80px;
 }
+
 .navbar-brand {
     padding: 0 15px;
     height: 70px;
     line-height: 70px;
 }
+
 .navbar-toggle {
     /* (70px - высота кнопки 34px) / 2 = 18px */
     margin-top: 18px;
@@ -52,7 +63,7 @@ body {
 }
 
 @media (min-width: 768px) {
-    .navbar-nav > li > a {
+    .navbar-nav>li>a {
         /* (70px - line-height 27px) / 2 = 21.5px */
         padding-top: 21.5px;
         padding-bottom: 21.5px;
@@ -60,7 +71,7 @@ body {
     }
 }
 
-.navbar-nav > li > p {
+.navbar-nav>li>p {
     /* (70px - line-height 27px) / 2 = 21.5px */
     padding-top: 21.5px;
     padding-bottom: 21.5px;
@@ -69,7 +80,7 @@ body {
     line-height: 27px;
 }
 
-.navbar-header > p {
+.navbar-header>p {
     padding-top: 21.5px;
     padding-bottom: 21.5px;
     margin-top: 0px;
@@ -84,9 +95,10 @@ body {
 }
 
 /* 70px - padding 15px*2 = 40px*/
-.navbar-brand > img {
+.navbar-brand>img {
     height: 40px;
 }
+
 /***********************************/
 
 /* Аннимация гамбургера */
@@ -94,14 +106,17 @@ body {
     border: none;
     background: transparent !important;
 }
+
 .navbar-toggle:hover {
     background: transparent !important;
 }
+
 .navbar-toggle .icon-bar {
     width: 22px;
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
 }
+
 .navbar-toggle .icon-bar:nth-of-type(1) {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -110,10 +125,12 @@ body {
     -ms-transform-origin: 10% 10%;
     transform-origin: 10% 10%;
 }
+
 .navbar-toggle .icon-bar:nth-of-type(2) {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
 .navbar-toggle .icon-bar:nth-of-type(3) {
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -122,20 +139,24 @@ body {
     -ms-transform-origin: 10% 90%;
     transform-origin: 10% 90%;
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(1) {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
     transform: rotate(0);
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(2) {
     opacity: 1;
     filter: alpha(opacity=100);
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(3) {
     -webkit-transform: rotate(0);
     -ms-transform: rotate(0);
     transform: rotate(0);
 }
+
 /****************************/
 
 
@@ -170,7 +191,7 @@ body {
     margin-bottom: 20px;
 }
 
-.caption-table{
+.caption-table {
     margin-bottom: 20px;
 }
 
@@ -220,11 +241,11 @@ body {
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0) 100%);
 }
 
-.carousel-inner > .item > img {
+.carousel-inner>.item>img {
     width: 100%;
 }
 
-.carousel-buttons  {
+.carousel-buttons {
     margin-bottom: 20px;
     padding: 0px;
 }
@@ -262,7 +283,8 @@ body {
 }
 
 .table-container {
-    /*border: 1px solid black;*/ /*#00557F*/
+    /*border: 1px solid black;*/
+    /*#00557F*/
 
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -284,17 +306,21 @@ body {
     margin: 0px;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1){
-    background-color: /*#f1f4ff;*/ #f8f8f8;
+.table-striped>tbody>tr:nth-child(2n+1) {
+    background-color:
+        /*#f1f4ff;*/
+        #f8f8f8;
 }
 
 .table-container .data-table thead th {
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));*/
     /*background: -moz-linear-gradient(center top, #006699 5%, #00557F 100%);*/
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');*/
-    background-color: grey;/*#006699*/
+    background-color: grey;
+    /*#006699*/
     color: white;
-    border-left: 1px solid black;/*#0070A8*/
+    border-left: 1px solid black;
+    /*#0070A8*/
 }
 
 .table-container .data-table tbody td {
@@ -316,20 +342,21 @@ body {
     float: right;
 }
 
-.table-container .pagination li > a {
+.table-container .pagination li>a {
     color: black;
 }
+
 /*
 .table-container .pagination > .active > span {
     background-color: #00557F;
 }
 */
 
-.form-group{
+.form-group {
     margin-bottom: 0px;
 }
 
-.calcbtn-group{
+.calcbtn-group {
     margin: 20px;
 }
 
@@ -337,7 +364,7 @@ body {
 .btn span.glyphicon {
     opacity: 0;
 }
+
 .btn.active span.glyphicon {
     opacity: 1;
 }
-

@@ -27,12 +27,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css?ver=1.0') }}" rel="stylesheet">
-
+<!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
 </head>
 
 <body>
-
-<nav class="navbar navbar-inverse">
+<!-- старый сласс navbar-inverse \ новый класс navbar-dark bg-dark -->
+<nav class="navbar navbar-inverse">  
     <!-- Контейнер (определяет ширину Navbar) -->
     <div class="container">
         <!-- Заголовок -->
@@ -86,6 +86,7 @@
 </div>
 
 @yield('content')
+ <!-- <div id="app">@yield('content')</div> -->
 
 <div id="footer">
     <div class="container">
@@ -100,11 +101,19 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js?ver=1.0') }}"></script>
+<!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+<!-- <script src="{{ asset('js/app.js?ver=1.0') }}"></script> -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/script.js?ver=1.0') }}"></script>
 
+
 <script>
-    $('#flash-overlay-modal').modal();
+   document.addEventListener('DOMContentLoaded', function () {
+    if (window.$) {
+        $('#flash-overlay-modal').modal();
+    }
+});
 </script>
 
 </body>

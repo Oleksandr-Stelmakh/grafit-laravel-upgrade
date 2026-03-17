@@ -1,31 +1,53 @@
-jQuery( function($) {
-	// эффекты таблиц
-	// ************************************
-	$('.table').on('click', '.row-clicable', function(){
-		window.location = $(this).attr('data-href');
-	});
+var prod_type = null;
 
-	// ** конструктор цен ** //
-	$('#prod_type').change( function() {
-		prod_type_change(this);
-	});
+jQuery(function ($) {
+    // эффекты таблиц
+    // ************************************
+    $('.table').on('click', '.row-clicable', function () {
+        window.location = $(this).attr('data-href');
+    });
 
-    $('.btn-calcprice').click( function() {
+    // ** конструктор цен ** //
+    $('#prod_type').change(function () {
+        prod_type_change(this);
+    });
+
+    $('.btn-calcprice').click(function () {
         btn_calcprice_onclick();
     });
 
     $(document).ready(function () {
         $('#prod_type').change();
-	});
+    });
 
     // автоматическое назначение класса Active элементу меню */
-    $(function() {
-        // путь текущей страницы
+    // $(function() {
+    //     // путь текущей страницы
+    //     var pathPage = location.pathname.slice(1);
+    //     var parentUl = $('.navbar-nav a[href*='+pathPage+']').closest('li').addClass('active').parent('ul');
+    //     if (parent.closest('.navbar-nav li').length) {
+    //         parentUl.closest('li').addClass('active');
+    //     }
+    // });
+
+    // автоматическое назначение класса Active элементу меню
+    $(function () {
+
         var pathPage = location.pathname.slice(1);
-        var parentUl = $('.navbar-nav a[href*='+pathPage+']').closest('li').addClass('active').parent('ul');
-        if (parent.closest('.navbar-nav li').length) {
-            parentUl.closest('li').addClass('active');
+
+        if (pathPage.length > 0) {
+
+            var parentUl = $('.navbar-nav a[href*="' + pathPage + '"]')
+                .closest('li')
+                .addClass('active')
+                .parent('ul');
+
+            if (parentUl.closest('.navbar-nav li').length) {
+                parentUl.closest('li').addClass('active');
+            }
+
         }
+
     });
 
 });
@@ -33,18 +55,19 @@ jQuery( function($) {
 // при изменении вида продукции
 // ************************************
 function prod_type_change(obj) {
-	prod_type = obj.value;
+    prod_type = obj.value;
 
-	$("#gr_format_form").attr('hidden',prod_type == '14579' ? false : true);	// бланк
-	$("#gr_format_journal").attr('hidden', prod_type == '14580' ? false : true);	// журнал
-	$("#gr_num_sheets").attr('hidden', prod_type == '14580' ? false : true);	// журнал
-	$("#gr_stitch").attr('hidden', prod_type == '14580' ? false : true);	// журнал
-	$("#gr_cover_type").attr('hidden', prod_type == '14580' ? false : true);	// журнал
-	$("#gr_num_pages").attr('hidden', prod_type == '14870' ? false : true);	// брошюра
+    $("#gr_format_form").attr('hidden', prod_type == '14579' ? false : true);	// бланк
+    $("#gr_format_journal").attr('hidden', prod_type == '14580' ? false : true);	// журнал
+    $("#gr_num_sheets").attr('hidden', prod_type == '14580' ? false : true);	// журнал
+    $("#gr_stitch").attr('hidden', prod_type == '14580' ? false : true);	// журнал
+    $("#gr_cover_type").attr('hidden', prod_type == '14580' ? false : true);	// журнал
+    $("#gr_num_pages").attr('hidden', prod_type == '14870' ? false : true);	// брошюра
 }
 
 // рассчитать цену
-function btn_calcprice_onclick(){
+function btn_calcprice_onclick() {
+    var format;
     var request_data;
 
     $("#calc_container").attr('hidden', true);
@@ -66,19 +89,19 @@ function btn_calcprice_onclick(){
         url: '/getprice/',
         type: 'get',
         data: {
-            prod_type : $('#prod_type')[0].value,
-            paper_type : $('#paper_type')[0].value,
-            format : format,
-            num_sheets : $('#num_sheets')[0].value,
-            stitch : $('#stitch')[0].checked ? 1 : 0,
-            numering : $('#numering')[0].checked ? 1 : 0,
-            cover_type : $('#cover_type')[0].value,
-            num : $('#num')[0].value,
-            discount : $('#discount')[0].value
+            prod_type: $('#prod_type')[0].value,
+            paper_type: $('#paper_type')[0].value,
+            format: format,
+            num_sheets: $('#num_sheets')[0].value,
+            stitch: $('#stitch')[0].checked ? 1 : 0,
+            numering: $('#numering')[0].checked ? 1 : 0,
+            cover_type: $('#cover_type')[0].value,
+            num: $('#num')[0].value,
+            discount: $('#discount')[0].value
         },
     };
 
-    if(request_data) {
+    if (request_data) {
 
         var request = $.ajax(request_data);
 
@@ -86,11 +109,11 @@ function btn_calcprice_onclick(){
             $("#calc_waiting").attr('hidden', true);
 
             // заполняем
-            if(data.error){
+            if (data.error) {
                 $("#calc_error").html(data.last_error_str);
                 $("#calc_error").attr('hidden', false);
 
-            } else{
+            } else {
                 $("#calc_name").html(data.name);
                 $("#calc_num").html(data.num);
                 $("#calc_full_price").html(data.full_price.toFixed(3));

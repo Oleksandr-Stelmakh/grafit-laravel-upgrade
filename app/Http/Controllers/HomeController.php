@@ -3,7 +3,6 @@
 namespace Grafit\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -20,13 +19,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $kontrs = Auth::user()->kontrs;
-        return view('Home')->with([
-            'kontrs' => $kontrs
-        ]);
+        return view('home');
     }
 }

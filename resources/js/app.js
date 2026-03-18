@@ -25,9 +25,9 @@ import 'bootstrap';
 console.log('VITE WORKS 🚀');
 console.log('jQuery version:', window.$?.fn?.jquery);
 
-import Vue from 'vue/dist/vue.esm.js';
+// import Vue from 'vue/dist/vue.esm.js';
 
-import Example from './components/Example.vue'
+// import Example from './components/Example.vue'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,10 +39,10 @@ import Example from './components/Example.vue'
 
 // Vue.component('example', require('./components/Example.vue').default);
 
-Vue.component('example', Example)
+// Vue.component('example', Example)
 
-const app = new Vue({
-    el: '#app',
-});
+// const app = new Vue({
+//     el: '#app',
+// });
 
 import './legacy/script.js';

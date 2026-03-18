@@ -45,4 +45,4 @@ const app = new Vue({
     el: '#app',
 });
 
-import '../../public/js/script.js'
+import './legacy/script.js';

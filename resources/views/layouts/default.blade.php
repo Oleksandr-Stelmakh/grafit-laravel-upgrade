@@ -27,7 +27,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css?ver=1.0') }}" rel="stylesheet">
-<!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+
 </head>
 
 <body>
@@ -85,8 +85,8 @@
     @include('flash::message')
 </div>
 
-@yield('content')
- <!-- <div id="app">@yield('content')</div> -->
+<!-- @yield('content') -->
+ <div id="app">@yield('content')</div>
 
 <div id="footer">
     <div class="container">
@@ -101,12 +101,7 @@
 </div>
 
 <!-- Scripts -->
-<!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
-<!-- <script src="{{ asset('js/app.js?ver=1.0') }}"></script> -->
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/script.js?ver=1.0') }}"></script>
-
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 <script>
    document.addEventListener('DOMContentLoaded', function () {

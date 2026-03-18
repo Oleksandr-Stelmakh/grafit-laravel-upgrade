@@ -45,4 +45,4 @@ console.log('jQuery version:', window.$?.fn?.jquery);
 //     el: '#app',
 // });
 
-import './legacy/script.js';
+import './modern/script.js';

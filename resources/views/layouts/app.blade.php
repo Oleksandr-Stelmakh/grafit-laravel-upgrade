@@ -14,67 +14,59 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app">
-       <nav class="navbar navbar-inverse">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                    </button>
-
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                       {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                   {{ config('app.name', 'Laravel') }}
+                </a>
+                
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-main">
+                    <span class="navbar-toggler-icon"></span> 
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbar-main">
 
-                  <ul class="nav navbar-nav">
-                  </ul>
+                    <ul class="navbar-nav me-auto">
+                    </ul>
 
-                  <ul class="nav navbar-nav navbar-right">
-                     @guest
+                    <ul class="navbar-nav ms-auto">
+                      @guest
 
-                     @if (Route::has('login'))
-                        <li>
-                            <a href="{{ route('login') }}">Login</a>
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
-                     @endif
+                        @endif
 
-                     @if (Route::has('register'))
-                        <li>
-                            <a href="{{ route('register') }}">Register</a>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
-                     @endif
+                        @endif
 
-                     @else
+                      @else
 
-                     <li class="dropdown">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                              {{ Auth::user()->name }} 
+                          </a>
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                   Logout
-                                </a>
-                            </li>
-
-                        </ul>
-
-                     </li>
+                           <ul class="dropdown-menu dropdown-menu-end">
+                             <li>
+                                 <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                 </a>
+                             </li>
+                           </ul>
+                        </li>
 
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
                         @csrf
@@ -88,12 +80,14 @@
             </div>
         </nav>
 
-        <!-- <main class="py-4"> main-content --> 
-        <main style="padding-top: 20px; padding-bottom: 20px;">    
+        <main class="py-4">
+            <div class="container mt-3">
+               @include('flash::message')
+            </div>   
             @yield('content')
         </main>
     </div>
-    
+
      @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </body>

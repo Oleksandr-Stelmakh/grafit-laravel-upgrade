@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ __('Dashboard') }}</div>
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

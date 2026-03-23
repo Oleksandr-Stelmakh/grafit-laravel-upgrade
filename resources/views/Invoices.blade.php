@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class = "row">
+        <div class = "row justify-content-center">
             <div class = "col-lg-6 col-md-6 col-sm-5">
                 <h2>Мои счета</h2>
             </div>
@@ -47,7 +47,7 @@
                                 <div>{{ $doc->kontr->fullname ?? "" }}</div>
                                 <div class = "visible-xs text-status-{{$status['id']}}"><small>{{$status['name']}}</small></div>
                             </td>
-                            <td class = "text-right">{{ number_format($doc->sum(),2, ',', ' ') }}</td>
+                            <td class = "text-center">{{ number_format($doc->sum(),2, ',', ' ') }}</td>
                             <td class = "text-center hidden-xs text-status-{{$status['id']}}"><small>{{$status['name']}}</small></td>
                         </tr>
                     @endforeach
@@ -57,3 +57,6 @@
     </div>
 
 @endsection
+
+
+

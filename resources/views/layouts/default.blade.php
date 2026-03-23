@@ -25,50 +25,48 @@
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css?ver=1.0') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('css/style.css?ver=1.0') }}" rel="stylesheet"> -->
 
 </head>
 
 <body>
-<!-- старый сласс navbar-inverse \ новый класс navbar-dark bg-dark -->
-<nav class="navbar navbar-inverse">  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
     <!-- Контейнер (определяет ширину Navbar) -->
     <div class="container">
         <!-- Заголовок -->
-        <div class="navbar-header">
+        
+        <!-- Бренд или название сайта (отображается в левой части меню) -->
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="{{ asset('img/topnav_logo.png') }}" height="36" alt="logo">
+        </a>
+
             <!-- Кнопка «Гамбургер» отображается только в мобильном виде (предназначена для открытия основного содержимого Navbar) -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-main">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Бренд или название сайта (отображается в левой части меню) -->
-            <a class="navbar-brand" href="/">
-                <img src="{{ asset('img/topnav_logo.png') }}" height="36" alt="Название бренда или сайта">
-            </a>
             <!-- информация для мобильного экрана -->
-            <p class="visible-xs navbar-text text-center" style="margin-left:0px; margin-right:0px">доставка: ~</p>
-        </div>
+            <p class="d-block d-lg-none navbar-text text-center w-100">доставка: ~</p>
+        
 
         <!-- Основная часть меню (может содержать ссылки, формы и другие элементы) -->
         <div class="collapse navbar-collapse" id="navbar-main">
 
             <!-- Содержимое основной части -->
-            <ul class="nav navbar-nav">
-                <li><a href="/invoices">Мои Счета</a></li>
-                <li><a href="/productions">Моя Продукция</a></li>
-                <li><a href="/constructor">Конструктор цен</a></li>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/invoices">Мои Счета</a></li>
+                <li class="nav-item"><a class="nav-link" href="/productions">Моя Продукция</a></li>
+                <li class="nav-item"><a class="nav-link" href="/constructor">Конструктор цен</a></li>
             </ul>
 
             <!-- Блок, расположенный справа -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ms-auto">
                 <!-- информация для большого экрана -->
-                <li><p class="navbar-text hidden-xs">доставка: ~</p></li>
+                <li><p class="navbar-text d-none d-lg-block">доставка: ~</p></li>
                 @if(Auth::check())
-                    <li><a href="/home"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/home">{{Auth::user()->name}}</a></li>
                 @else
-                    <li><a href="/login">Войти</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Войти</a></li>
                 @endif
             </ul>
         </div>
@@ -82,10 +80,21 @@
         session()->forget('status');
     } ?>
 
-    @include('flash::message')
+     @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
 </div>
 
-<!-- @yield('content') -->
  <div id="app">@yield('content')</div>
 
 <div id="footer">
@@ -103,13 +112,13 @@
 <!-- Scripts -->
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-<script>
+<!-- <script>
    document.addEventListener('DOMContentLoaded', function () {
     if (window.$) {
         $('#flash-overlay-modal').modal();
     }
 });
-</script>
+</script> -->
 
 </body>
 </html>

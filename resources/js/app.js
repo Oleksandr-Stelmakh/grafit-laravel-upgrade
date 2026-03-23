@@ -13,13 +13,9 @@ import './bootstrap';
 
 // import 'bootstrap/dist/js/bootstrap.bundle';
 
-import $ from 'jquery';
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 
-window.$ = $;
-window.jQuery = $;
-
-// Bootstrap 3 JS
-import 'bootstrap';
+window.bootstrap = bootstrap;
 
 // Тест
 console.log('VITE WORKS 🚀');
@@ -46,3 +42,36 @@ console.log('jQuery version:', window.$?.fn?.jquery);
 // });
 
 import './modern/script.js';
+
+window.goToSlide = function (index) {
+   const carousel = document.querySelector('#MaketsCarousel');
+   const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+
+   bsCarousel.to(index);
+   setActiveSlide(index);
+}
+
+// подсветка активного элемента
+function setActiveSlide(index) {
+   document.querySelectorAll('.slide-one').forEach(el => {
+      el.classList.remove('active');
+
+      if (parseInt(el.dataset.index) === index) {
+         el.classList.add('active');
+      }
+   });
+}
+
+// при перелистывании (стрелки, свайп и т.д.)
+document.addEventListener('DOMContentLoaded', function () {
+   const carousel = document.querySelector('#MaketsCarousel');
+
+   if (!carousel) return;
+
+   carousel.addEventListener('slid.bs.carousel', function (e) {
+      setActiveSlide(e.to);
+   });
+
+   // начальная подсветка
+   setActiveSlide(0);
+});

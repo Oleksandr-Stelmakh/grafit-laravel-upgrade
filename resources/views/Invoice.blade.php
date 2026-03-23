@@ -10,7 +10,7 @@
 
             <table class = "caption-table">
                 <tr>
-                    <td width = 120px><b>Поставщик:</b></td>
+                    <td class="col-3"><b>Поставщик:</b></td>
                     <td>{{ config('firm.name')}}</td>
                 </tr>
                 <tr>
@@ -26,12 +26,12 @@
             <table class = "table table-hover">
                 <thead>
                 <tr>
-                    <th class = "text-center" width = 5%>№ п/п</th>
-                    <th class = "text-center" width = 10%>Код формы</th>
+                    <th class = "text-center" width="5%">№ п/п</th>
+                    <th class = "text-center col-1">Код формы</th>
                     <th class = "text-center">Продукция</th>
-                    <th class = "text-center hidden-xs" width = 15%>Параметры</th>
+                    <th class = "text-center d-none d-md-table-cell" width = 15%>Параметры</th>
                     <th class = "text-center" width = 15%>Кол-во</th>
-                    <th class = "text-center hidden-xs" width = 10%>Цена</th>
+                    <th class = "text-center d-none d-sm-table-cell col-1">Цена</th>
                     <th class = "text-center" width = 19%>Сумма</th>
                 </tr>
                 </thead>
@@ -41,15 +41,15 @@
                     <tr class = "row-clicable" data-href="/productions/{{$doc_str->id_tmc}}">
                         <td class = "text-center">{{$loop->iteration}}</td>
                         <td class = "text-center">{{$doc_str->tmc->code_form ?? ''}}</td>
-                        <td>
+                        <td class = "text-center">
                             <div>{{$doc_str->tmc->fullname ?? ''}}</div>
-                            <div class = "visible-xs">
+                            <div class = "d-md-none">
                                 <small class = "text-muted">
                                     <span class="glyphicon {{$doc_str->tmc->prodType->icon ?? ''}}"></span> {{$params}}
                                 </small>
                             </div>
                         </td>
-                        <td class = "text-left hidden-xs">
+                        <td class = "text-start d-none d-md-table-cell">
                             <small class = "text-muted">
                                 <span class="glyphicon {{$doc_str->tmc->prodType->icon ?? ''}}"></span> {{$params}}
                             </small>
@@ -58,7 +58,7 @@
                             <div>{{$doc_str->num}} шт</div>
                             <div class = "text-muted visible-xs"><small>x {{number_format($doc_str->price, 3, ',', ' ')}}</small></div>
                         </td>
-                        <td class = "text-center hidden-xs">{{number_format($doc_str->price, 3, ',', ' ')}}</td>
+                        <td class = "text-center d-none d-md-table-cell">{{number_format($doc_str->price, 3, ',', ' ')}}</td>
                         <td class = "text-center">{{number_format($doc_str->sum, 2, ',', ' ')}}</td>
                     </tr>
                 @endforeach
@@ -69,8 +69,8 @@
                     <td></td>
                     <td class = "hidden-xs"></td>
                     <td class = "hidden-xs"></td>
-                    <td class="text-center"><b>ВСЕГО:</b></td>
-                    <td colspan = "2" class = "text-right"><b>{{number_format($doc->sum(), 2, ',', ' ')}} грн</b></td>
+                    <td class="text-end fw-bold" colspan="2">ВСЕГО:</td>
+                    <td class="text-center fw-bold">{{number_format($doc->sum(), 2, ',', ' ')}} грн</td>
                 </tr>
                 </tfoot>
             </table>

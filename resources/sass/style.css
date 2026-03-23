@@ -1,0 +1,304 @@
+/*для футера*/
+html {
+   position: relative;
+   min-height: 100%;
+}
+
+/*для футера*/
+body {
+   margin-bottom: 150px;
+   color: black;
+   background-color: white;
+   font-family: Arial, sans-serif;
+}
+
+.form-control {
+   margin-bottom: 10px;
+}
+
+.table>thead>tr>th {
+   vertical-align: middle;
+}
+
+.container-alert {
+   padding: 0px;
+}
+
+.alert {
+   width: 100%;
+   margin: 0px;
+   text-align: center;
+}
+
+.navbar {
+   margin-bottom: 0px;
+   border-radius: 0px;
+}
+
+/* ===== NAVBAR ===== */
+
+/* Высота меню */
+.navbar {
+   min-height: 80px;
+}
+
+.navbar-brand {
+   padding: 0 15px;
+   height: 70px;
+   line-height: 70px;
+}
+
+/* BS3 — УДАЛЕНО (оставляем как комментарий)
+.navbar-toggle {
+   margin-top: 18px;
+   padding: 9px 10px !important;
+}
+*/
+
+@media (min-width: 768px) {
+
+   /*  BS3 селектор → заменен */
+   /* .navbar-nav>li>a */
+   .navbar-nav .nav-link {
+      padding-top: 21.5px;
+      padding-bottom: 21.5px;
+      line-height: 27px;
+   }
+}
+
+.navbar-nav>li>p {
+   padding-top: 21.5px;
+   padding-bottom: 21.5px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   line-height: 27px;
+}
+
+/* BS3 — УДАЛЕНО
+.navbar-header>p {
+   padding-top: 21.5px;
+   padding-bottom: 21.5px;
+}
+*/
+
+/* #info-jumbotron {
+   font-family: Arial, sans-serif;
+   padding-top: 60px;
+   padding-bottom: 60px;
+   line-height: 1.8;
+}
+
+#info-jumbotron h1 {
+   font-size: 48px;
+} */
+
+#info-jumbotron p {
+   font-size: 22px;
+}
+
+
+/* */
+.navbar-brand {
+   padding-top: 15px;
+   padding-bottom: 15px;
+}
+
+/* 70px - padding 15px*2 = 40px*/
+.navbar-brand>img {
+   height: 40px;
+}
+
+/***********************************/
+
+/*  BS3 гамбургер — отключен полностью
+.navbar-toggle { ... }
+.icon-bar { ... }
+*/
+
+/****************************/
+
+#footer {
+   position: absolute;
+   bottom: 0px;
+   height: 150px;
+   width: 100%;
+   padding: 20px;
+   background: #252525;
+   color: white;
+}
+
+#info-jumbotron {
+   margin: 0px;
+   color: white;
+   text-shadow: 0 1px 5px rgba(0, 0, 0, 1.0);
+}
+
+.img-maket {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding: 30px;
+   background: white;
+   border: 1px solid #cacaca;
+   border-radius: 3px;
+}
+
+.production-caption {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.caption-table {
+   margin-bottom: 20px;
+}
+
+.caption-table td {
+   padding: 5px;
+}
+
+.row-clicable {
+   cursor: pointer;
+}
+
+.text-status-1 {
+   color: gray;
+}
+
+.text-status-2 {
+   color: green;
+}
+
+.text-status-3 {
+   color: dodgerblue;
+}
+
+.text-status-4 {
+   color: mediumblue;
+}
+
+.text-status-5 {
+   color: red;
+}
+
+/*  BS3 carousel — пока отключаем */
+/* 
+.carousel .item { ... }
+.carousel-control.right { ... }
+.carousel-control.left { ... } */
+
+
+.production-history {
+   margin-top: 30px;
+   margin-bottom: 30px;
+}
+
+/* ===== TABLE ===== */
+
+.table-container {
+   border-radius: 4px;
+   margin-top: 10px;
+   margin-bottom: 20px;
+   /* overflow-x: auto; */
+   /* горизонтальная прокрутка для маленьких экранов */
+}
+
+/* ВАЖНО — фикс выравнивания */
+.table {
+   width: 100%;
+   table-layout: auto;
+}
+
+/* полосы */
+.table-striped>tbody>tr:nth-child(2n+1) {
+   background-color: #f8f8f8;
+}
+
+/* pagination */
+.table-container .pagination {
+   float: right;
+}
+
+/* ✅ BS5 */
+.pagination .page-link {
+   color: black;
+}
+
+/* 🔥 фикс стрелок */
+.pagination a {
+   display: inline-block;
+   width: auto;
+}
+
+.form-group {
+   margin-bottom: 0px;
+}
+
+.calcbtn-group {
+   margin: 20px;
+}
+
+/* ===== CAROUSEL (Bootstrap 5 fix + BS3 look) ===== */
+
+#MaketsCarousel {
+   background: #fff;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   padding: 10px;
+}
+
+/* контейнер слайдов */
+#MaketsCarousel .carousel-inner {
+   text-align: center;
+}
+
+/* сами картинки */
+#MaketsCarousel .carousel-item img {
+   margin: 0 auto;
+   max-height: 60vh;
+   width: auto;
+}
+
+/* кнопки снизу */
+.carousel-buttons {
+   margin-top: 10px;
+}
+
+/* кнопки-слайды */
+.carousel-buttons .btn {
+   margin: 2px;
+   min-width: 40px;
+   font-weight: 500;
+}
+
+/* превью слева */
+.carousel-buttons img {
+   width: 100%;
+   margin-bottom: 5px;
+   cursor: pointer;
+   border: 1px solid #ddd;
+   border-radius: 3px;
+   transition: all 0.2s ease;
+}
+
+/* hover эффект */
+.carousel-buttons img:hover {
+   border-color: #999;
+   transform: scale(1.1);
+}
+
+/* активный слайд (добавим позже через JS) */
+.carousel-buttons img.active {
+   border: 2px solid #3097D1;
+}
+
+/* активная кнопка (номер слайда) */
+.carousel-buttons .btn.active {
+   border: 1px solid dodgerblue;
+   box-shadow: 0 0 6px rgba(30, 144, 255, 0.6);
+   background-color: transparent;
+   color: dodgerblue;
+}
+
+/* чтобы не было серого hover от bootstrap */
+.carousel-buttons .btn:hover {
+   background-color: dodgerblue;
+}

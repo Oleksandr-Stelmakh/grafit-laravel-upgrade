@@ -1,37 +1,116 @@
+// // Body
+// $body-bg: #f5f8fa;
+
+// // Borders
+// $laravel-border-color: darken($body-bg, 10%);
+// $list-group-border: $laravel-border-color;
+// $navbar-default-border: $laravel-border-color;
+// $panel-default-border: $laravel-border-color;
+// $panel-inner-border: $laravel-border-color;
+
+// // Brands
+// $brand-primary: #3097D1;
+// $brand-info: #8eb4cb;
+// $brand-success: #2ab27b;
+// $brand-warning: #cbb956;
+// $brand-danger: #bf5329;
+
+// // Typography
+// $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+// $font-family-sans-serif: "Raleway", sans-serif;
+// $font-size-base: 14px;
+// $line-height-base: 1.6;
+// $text-color: #636b6f;
+
+// // Navbar
+// $navbar-default-bg: #fff;
+
+// // Buttons
+// $btn-default-color: $text-color;
+
+// // Inputs
+// $input-border: lighten($text-color, 40%);
+// $input-border-focus: lighten($brand-primary, 25%);
+// $input-color-placeholder: lighten($text-color, 30%);
+
+// // Panels
+// $panel-default-heading-bg: #fff;
+
+
+
+// =============================
+// Bootstrap 5 theme overrides
+// =============================
+
 // Body
 $body-bg: #f5f8fa;
+$body-color: #636b6f;
+
+// Typography
+// Для BS3-похожего поведения держим базовый размер 14px ≈ 0.875rem
+$font-family-base: Arial, sans-serif;
+$font-family-sans-serif: $font-family-base;
+// $font-size-base: 0.875rem;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+
+// Colors
+$primary: #3097D1;
+$info: #8eb4cb;
+$success: #2ab27b;
+$warning: #cbb956;
+$danger: #bf5329;
+
+// Borders / surfaces
+$border-color: darken($body-bg, 10%);
+$card-border-color: $border-color;
+$card-cap-bg: #fff;
+
+// Forms
+$input-border-color: lighten($body-color, 40%);
+$input-focus-border-color: lighten($primary, 25%);
+$form-select-border-color: $input-border-color;
+$form-select-focus-border-color: $input-focus-border-color;
+
+// Navbar
+$navbar-dark-color: rgba(255, 255, 255, .75);
+$navbar-dark-hover-color: rgba(255, 255, 255, 1);
+$navbar-dark-active-color: #fff;
+
+// Misc
+$component-active-bg: $primary;
+$pagination-color: $body-color;
+$pagination-hover-color: $primary;
+
+// =============================
+// Legacy Bootstrap 3 aliases
+// (для старых SCSS-файлов проекта)
+// =============================
+
+// Brands
+$brand-primary: $primary;
+$brand-info: $info;
+$brand-success: $success;
+$brand-warning: $warning;
+$brand-danger: $danger;
 
 // Borders
-$laravel-border-color: darken($body-bg, 10%);
+$laravel-border-color: $border-color;
 $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
-
-// Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
-
 // Navbar
 $navbar-default-bg: #fff;
 
-// Buttons
+// Typography legacy
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$text-color: $body-color;
 $btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
+$input-border: $input-border-color;
+$input-border-focus: $input-focus-border-color;
 $input-color-placeholder: lighten($text-color, 30%);
 
-// Panels
+// Panels legacy
 $panel-default-heading-bg: #fff;

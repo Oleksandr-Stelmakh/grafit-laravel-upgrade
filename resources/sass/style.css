@@ -302,3 +302,9 @@ body {
 .carousel-buttons .btn:hover {
    background-color: dodgerblue;
 }
+
+
+/* .form-check-input { как вариант для чекбокса нумерации — пока отключаем
+   width: 1.3em;
+   height: 1.3em;
+} */

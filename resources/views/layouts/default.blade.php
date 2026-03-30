@@ -12,8 +12,7 @@
     </script>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+   
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,19 +20,15 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
-
-    <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css?ver=1.0') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('css/style.css?ver=1.0') }}" rel="stylesheet"> -->
+    
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
     <!-- Контейнер (определяет ширину Navbar) -->
-    <div class="container">
+        <div class="container">
         <!-- Заголовок -->
         
         <!-- Бренд или название сайта (отображается в левой части меню) -->
@@ -41,12 +36,14 @@
             <img src="{{ asset('img/topnav_logo.png') }}" height="36" alt="logo">
         </a>
 
-            <!-- Кнопка «Гамбургер» отображается только в мобильном виде (предназначена для открытия основного содержимого Navbar) -->
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-main">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- информация для мобильного экрана -->
-            <p class="d-block d-lg-none navbar-text text-center w-100">доставка: ~</p>
+        <!-- Кнопка «Гамбургер» отображается только в мобильном виде (предназначена для открытия основного содержимого Navbar) -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-main">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- информация для мобильного экрана -->
+        <span class="navbar-text d-block d-lg-none text-center w-100">
+            доставка: ~ 
+        </span>
         
 
         <!-- Основная часть меню (может содержать ссылки, формы и другие элементы) -->
@@ -54,15 +51,27 @@
 
             <!-- Содержимое основной части -->
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="/invoices">Мои Счета</a></li>
-                <li class="nav-item"><a class="nav-link" href="/productions">Моя Продукция</a></li>
-                <li class="nav-item"><a class="nav-link" href="/constructor">Конструктор цен</a></li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('invoices*') ? 'active' : '' }}" href="/invoices">
+                        Мои Счета
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('productions*') ? 'active' : '' }}" href="/productions">
+                        Моя Продукция
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('constructor*') ? 'active' : '' }}" href="/constructor">
+                        Конструктор цен
+                    </a>
+                </li>
             </ul>
 
             <!-- Блок, расположенный справа -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto mt-3">
                 <!-- информация для большого экрана -->
-                <li><p class="navbar-text d-none d-lg-block">доставка: ~</p></li>
+                <li><span class="navbar-text d-none d-lg-block">доставка: ~</span></li>
                 @if(Auth::check())
                 <li class="nav-item"><a class="nav-link" href="/home">{{Auth::user()->name}}</a></li>
                 @else
@@ -74,17 +83,19 @@
 </nav>
 
 <!-- Всплывающие сообщения: laracast/flash + перехват 'status'-->
-<div class="container-fluid container-alert">
-    <?php if (session('status')) {
-        flash()->overlay(session('status'), config('app.name'));
-        session()->forget('status');
-    } ?>
+<div class="container-md container-alert">
+    @if(session('status'))
+        @php
+            flash()->overlay(session('status'), config('app.name'));
+            session()->forget('status');
+        @endphp
+    @endif
 
-     @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+    @if(session('success'))
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+         {{ session('success') }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+     </div>
     @endif
 
     @if(session('error'))
@@ -95,7 +106,8 @@
     @endif
 </div>
 
- <div id="app">@yield('content')</div>
+@yield('content')
+
 
 <div id="footer">
     <div class="container">
@@ -111,14 +123,6 @@
 
 <!-- Scripts -->
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-<!-- <script>
-   document.addEventListener('DOMContentLoaded', function () {
-    if (window.$) {
-        $('#flash-overlay-modal').modal();
-    }
-});
-</script> -->
 
 </body>
 </html>

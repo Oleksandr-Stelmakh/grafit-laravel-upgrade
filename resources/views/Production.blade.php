@@ -17,13 +17,17 @@
                  <table class="table param-table">
                      <tbody>
                      <tr>
-                         <td class="col-xs-4"><b>Код формы:</b></td>
-                         <td class="col-xs-8">{{ $production->code_form }}</td>
+                         <td class="col-4"><b>Код формы:</b></td>
+                         <td class="col-8">{{ $production->code_form }}</td>
                      </tr>
                      <tr>
                          <td><b>Тип продукции:</b></td>
                          <td>
-                             <span class="glyphicon {{ $production->prodType->icon ?? ''}}"></span> {{ $production->prodType->name ?? ''}} {{ $production->format->name ?? '' }}
+                            @if($production->prodType->icon_class)
+                                <i class="bi {{ $production->prodType->icon_class }}"></i>
+                            @endif
+                             {{ $production->prodType->name ?? ''}} 
+                             {{ $production->format->name ?? '' }}
                          </td>
                      </tr>
                      <tr>
@@ -54,32 +58,22 @@
                  <!-- Превью-изображения макетов-->
                  <div class='carousel-buttons col-8 d-none d-sm-block'>
                      @foreach($makets_items as $maket)
-                         <img src={{ asset($maket) }} alt="макет" class="slide-one" data-index="{{$loop->index}}" onclick="goToSlide({{$loop->index}})">
+                         <img src="{{ asset($maket) }}" alt="макет" class="slide-one" data-index="{{$loop->index}}" onclick="goToSlide({{$loop->index}})">
                      @endforeach
                  </div>
 
                  <!-- Блок с каруселью -->
                  <div class="col-12 col-sm-10 p-0">
-                     <div id="MaketsCarousel" class="carousel slide" data-bs-interval="false" data-bs-wrap="false"
-                          data-ride="carousel">
+                     <div id="MaketsCarousel" class="carousel slide" data-bs-interval="false" data-bs-wrap="false">
                          <!-- Слайды карусели -->
                          <div class="carousel-inner">
                              @foreach($makets_items as $maket)
                                  <!-- <div class="{{$loop->index==0 ? 'item active':'item'}}"> -->
                                      <div class="carousel-item {{$loop->first ? 'active' : ''}}">
-                                     <img src={{ asset($maket) }} alt="Макет" class="img-maket center-block" style="max-height: 60vh; width: auto">
+                                     <img src="{{ asset($maket) }}" alt="Макет" class="img-maket d-block mx-auto" style="max-height: 60vh; width: auto">
                                  </div>
                              @endforeach
                          </div>
-                         <!-- Кнопка, осуществляющая переход на предыдущий слайд -->
-                         {{--<a class="carousel-control left" href="#MaketsCarousel" data-slide="prev">--}}
-                             {{--<span class="glyphicon glyphicon-chevron-left"></span>--}}
-                         {{--</a>--}}
-                         {{--<!-- Кнопка, осуществляющая переход на следующий слайд -->--}}
-                         {{--<a class="carousel-control right" href="#MaketsCarousel" data-slide="next">--}}
-                             {{--<span class="glyphicon glyphicon-chevron-right"></span>--}}
-                         {{--</a>--}}
-                     {{--</div>--}}
 
                      <!-- Кнопки управления -->
                      <div class='text-center carousel-buttons'>
@@ -123,11 +117,13 @@
                              <tr class="row-clicable" data-href="/invoices/{{$doc_str->doc->id}}">
                                  <td class='text-center'>{{ $doc_str->doc->date_doc ?? ''}}</td>
                                  <td class='text-center'>{{ $doc_str->doc->num_order ?? ''}}</td>
-                                 <td class="text-start">
+                                 <td class="text-center">
                                      <div style='display: inline-block'>{{ $doc_str->doc->recipient->fullname ?? ''}}</div>
                                      <div>
                                          <small class="text-muted">
-                                             <span class="glyphicon {{ $production->prodType->icon ?? ''}}"></span>
+                                            @if($production->prodType->icon_class)
+                                               <i class="bi {{ $production->prodType->icon_class }}"></i>
+                                            @endif
                                              {{ $doc_str->params() }}
                                          </small>
                                      </div>

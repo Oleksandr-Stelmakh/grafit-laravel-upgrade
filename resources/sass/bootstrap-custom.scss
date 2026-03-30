@@ -1,0 +1,12 @@
+@use "sass:color";
+@use "./variables" as *;
+
+@forward "bootstrap/scss/bootstrap" with ($body-bg: $body-bg,
+   $body-color: $body-color,
+   $primary: $primary,
+   $success: $success,
+   $info: $info,
+   $warning: $warning,
+   $danger: $danger,
+   $font-family-base: $font-family-base,
+);

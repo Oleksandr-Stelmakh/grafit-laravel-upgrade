@@ -5,14 +5,14 @@
     <div class="container">
         <div class = "row">
             <div class = "col-lg-6 col-md-6 col-sm-5">
-                <h2>Моя продукция</h2>
+                <h2 class="mt-3">Моя продукция</h2>
             </div>
             <div class = "col-lg-6 col-md-6 col-sm-7">
                 {!! Form::open(['route' => 'productions', 'method' => 'get']) !!}
-                <div class="input-group" style = "float: left; margin-top: 20px">
+                <div class="input-group mt-3">
                     <input type="text" class="form-control" name = "search" placeholder="Поиск: код формы, № формы или наименование" value="{{request()->input('search')}}">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Найти</button>
+                    <span class="px-2">
+                        <button class="btn btn-secondary" type="submit">Найти</button>
                     </span>
                 </div>
                 {!! Form::close() !!}
@@ -25,8 +25,8 @@
                 <tr>
                     <th class = "text-center">Код формы</th>
                     <th class = "text-center">Наименование</th>
-                    <th class = "text-center hidden-xs">№ формы</th>
-                    <th class = "text-center hidden-xs">Параметры</th>
+                    <th class = "text-center d-none d-md-table-cell">№ формы</th>
+                    <th class = "text-center d-none d-md-table-cell">Параметры</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -41,23 +41,29 @@
                             <td class = "text-center">{{$production->code_form}}</td>
                             <td>
                                 <div>{{$production->fullname}}</div>
-                                <div class = "visible-xs">
+                                <!-- мобильная версия -->
+                                <div class = "d-block d-md-none">
                                     <small class = "text-muted">
-                                        <span class="glyphicon {{ $production->prodType->icon ?? ''}}"></span>
+                                        @if($production->prodType->icon_class)
+                                            <i class="bi {{ $production->prodType->icon_class }}"></i>
+                                        @endif
                                         {{$production->num_form}}
-                                        {!!  $params !!}
+                                        {!! $params !!}
                                     </small>
                                 </div>
                             </td>
-                            <td class = "hidden-xs text-center">
+                            <!-- десктоп -->
+                            <td class = "d-none d-md-table-cell text-center">
                                 <small>
                                     {{$production->num_form}}
                                 </small>
                             </td>
-                            <td class = "text-center hidden-xs">
+                            <td class = "text-center d-none d-md-table-cell">
                                 <small class = "text-muted">
-                                    <span class="glyphicon {{$production->prodType->icon ?? ''}}"></span>
-                                    {!!  $params !!}
+                                     @if($production->prodType->icon_class)
+                                            <i class="bi {{ $production->prodType->icon_class }}"></i>
+                                         @endif
+                                    {!! $params !!}
                                 </small>
                             </td>
                         </tr>

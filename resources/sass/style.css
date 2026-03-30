@@ -1,3 +1,11 @@
+.card-header {
+   background-color: #fdfeff;
+}
+
+.card-body {
+   background-color: #fafeff;
+}
+
 /*для футера*/
 html {
    position: relative;
@@ -22,6 +30,9 @@ body {
 
 .container-alert {
    padding: 0px;
+   display: flex;
+   position: absolute;
+   justify-self: center;
 }
 
 .alert {
@@ -45,20 +56,11 @@ body {
 .navbar-brand {
    padding: 0 15px;
    height: 70px;
-   line-height: 70px;
+   line-height: 40px;
 }
-
-/* BS3 — УДАЛЕНО (оставляем как комментарий)
-.navbar-toggle {
-   margin-top: 18px;
-   padding: 9px 10px !important;
-}
-*/
 
 @media (min-width: 768px) {
 
-   /*  BS3 селектор → заменен */
-   /* .navbar-nav>li>a */
    .navbar-nav .nav-link {
       padding-top: 21.5px;
       padding-bottom: 21.5px;
@@ -74,30 +76,24 @@ body {
    line-height: 27px;
 }
 
-/* BS3 — УДАЛЕНО
-.navbar-header>p {
-   padding-top: 21.5px;
-   padding-bottom: 21.5px;
-}
-*/
-
-/* #info-jumbotron {
-   font-family: Arial, sans-serif;
-   padding-top: 60px;
-   padding-bottom: 60px;
-   line-height: 1.8;
+.navbar-nav .nav-link {
+   border-radius: 10px;
+   padding: 7px;
 }
 
-#info-jumbotron h1 {
-   font-size: 48px;
-} */
+.navbar .nav-link.active {
+   background-color: #3b709f;
+   border-radius: 8px;
+}
+
+.btn-secondary {
+   background-color: #3097D1;
+}
 
 #info-jumbotron p {
    font-size: 22px;
 }
 
-
-/* */
 .navbar-brand {
    padding-top: 15px;
    padding-bottom: 15px;
@@ -107,15 +103,6 @@ body {
 .navbar-brand>img {
    height: 40px;
 }
-
-/***********************************/
-
-/*  BS3 гамбургер — отключен полностью
-.navbar-toggle { ... }
-.icon-bar { ... }
-*/
-
-/****************************/
 
 #footer {
    position: absolute;
@@ -179,13 +166,6 @@ body {
    color: red;
 }
 
-/*  BS3 carousel — пока отключаем */
-/* 
-.carousel .item { ... }
-.carousel-control.right { ... }
-.carousel-control.left { ... } */
-
-
 .production-history {
    margin-top: 30px;
    margin-bottom: 30px;
@@ -197,11 +177,8 @@ body {
    border-radius: 4px;
    margin-top: 10px;
    margin-bottom: 20px;
-   /* overflow-x: auto; */
-   /* горизонтальная прокрутка для маленьких экранов */
 }
 
-/* ВАЖНО — фикс выравнивания */
 .table {
    width: 100%;
    table-layout: auto;
@@ -217,12 +194,11 @@ body {
    float: right;
 }
 
-/* ✅ BS5 */
 .pagination .page-link {
    color: black;
 }
 
-/* 🔥 фикс стрелок */
+/*  фикс стрелок */
 .pagination a {
    display: inline-block;
    width: auto;
@@ -285,7 +261,6 @@ body {
    transform: scale(1.1);
 }
 
-/* активный слайд (добавим позже через JS) */
 .carousel-buttons img.active {
    border: 2px solid #3097D1;
 }

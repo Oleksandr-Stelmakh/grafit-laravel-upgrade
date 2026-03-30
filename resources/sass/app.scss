@@ -1,11 +1,28 @@
-// Fonts
+// // Fonts
+// @import url('https://fonts.bunny.net/css?family=Nunito');
+
+// // Variables
+// @import 'variables';
+
+// // Bootstrap
+// @import "bootstrap/scss/bootstrap";
+
+// // Кастомные стили
+// @import "style";
+
+// // Bootstrap Icons
+// @import "bootstrap-icons/font/bootstrap-icons.css";
+
+
+// 1. Sass modules
+@use "sass:color";
+
+// 2. Bootstrap (через прокси)
+@use "./bootstrap-custom";
+
+// 3. Кастомные стили
+@use "./style" as *;
+
+// 4. CSS
 @import url('https://fonts.bunny.net/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import "bootstrap/scss/bootstrap";
-
-// Кастомные стили
-@import "style";
+@import "bootstrap-icons/font/bootstrap-icons.css";

@@ -13,9 +13,6 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app">
@@ -40,13 +37,17 @@
 
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link {{ request()->is('login*') ? 'active' : '' }}" href="{{ route('login') }}">
+                                Login
+                            </a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link {{ request()->is('register*') ? 'active' : '' }}" href="{{ route('register') }}">
+                                Register
+                            </a>
                         </li>
                         @endif
 
@@ -68,7 +69,7 @@
                            </ul>
                         </li>
 
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> 
                         @csrf
                      </form>
 

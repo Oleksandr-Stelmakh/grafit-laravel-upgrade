@@ -17,11 +17,11 @@
                  <table class="table param-table">
                      <tbody>
                      <tr>
-                         <td class="col-4"><b>Код формы:</b></td>
+                         <td class="col-4"><b>Код форми:</b></td>
                          <td class="col-8">{{ $production->code_form }}</td>
                      </tr>
                      <tr>
-                         <td><b>Тип продукции:</b></td>
+                         <td><b>Тип продукції:</b></td>
                          <td>
                             @if($production->prodType->icon_class)
                                 <i class="bi {{ $production->prodType->icon_class }}"></i>
@@ -31,12 +31,12 @@
                          </td>
                      </tr>
                      <tr>
-                         <td><b>Параметры:</b></td>
+                         <td><b>Параметри:</b></td>
                          <td>{{ $production->params() }}</td>
                      </tr>
                      @if($production->num_form)
                          <tr>
-                             <td><b>№ формы:</b></td>
+                             <td><b>№ форми:</b></td>
                              <td>{{ $production->num_form }}</td>
                          </tr>
                      @endif
@@ -97,14 +97,14 @@
              <div class="col-12 {{$wide_maket ? 'col-md-4' : 'col-md-5'}} {{count($makets_items)==0 ? 'offset-md-4' : ''}}">
 
                  <div class="table-container">
-                     <h3 class="text-center">История заказов продукции:</h3>
+                     <h3 class="text-center">Історія замовлень продукції:</h3>
                      <table class="table production-history table-striped table-hover">
                          <thead>
                          <tr>
                              <th class='text-center' width=15%>Дата</th>
-                             <th class='text-center' width=15%>№ заказа</th>
-                             <th class='text-center'>Получатель</th>
-                             <th class='text-center' width=20%>Кол-во</th>
+                             <th class='text-center' width=15%>№ замовлення</th>
+                             <th class='text-center'>Одержувач</th>
+                             <th class='text-center' width=20%>Кількість</th>
                          </tr>
                          </thead>
                          <tfoot>

@@ -6,22 +6,22 @@
             @php 
               $status = $doc->status(); 
             @endphp
-            <h3 class= "text-center">Счет № {{$doc->num_doc}} от {{ $doc->date_doc }}
+            <h3 class= "text-center">Рахунок № {{$doc->num_doc}} от {{ $doc->date_doc }}
                 <p><small>{{$status['name']}}</small></p>
             </h3>
 
             <table class = "caption-table">
                 <tr>
-                    <td class="col-3"><b>Поставщик:</b></td>
+                    <td class="col-3"><b>Постачальник:</b></td>
                     <td>{{ config('firm.name')}}</td>
                 </tr>
                 <tr>
-                    <td><b>Плательщик:</b></td>
+                    <td><b>Платник:</b></td>
                     <td>{{ $doc->kontr->fullname ?? ""}}</td>
                 </tr>
                 <tr>
-                    <td><b>Получатель:</b></td>
-                    <td>{{$doc->id_kontr==$doc->id_recipient ? "он же" : $doc->recipient->fullname ?? ""}}</td>
+                    <td><b>Одержувач:</b></td>
+                    <td>{{$doc->id_kontr==$doc->id_recipient ? "він же" : $doc->recipient->fullname ?? ""}}</td>
                 </tr>
             </table>
 
@@ -29,12 +29,12 @@
                 <thead>
                 <tr>
                     <th class = "text-center" style="width: 5%;">№ п/п</th>
-                    <th class = "text-center col-1">Код формы</th>
-                    <th class = "text-center">Продукция</th>
-                    <th class = "text-center d-none d-md-table-cell" style="width: 15%;">Параметры</th>
-                    <th class = "text-center" style="width: 15%;">Кол-во</th>
-                    <th class = "text-center d-none d-sm-table-cell col-1">Цена</th>
-                    <th class = "text-center" style="width: 19%;">Сумма</th>
+                    <th class = "text-center col-1">Код форми</th>
+                    <th class = "text-center">Продукція</th>
+                    <th class = "text-center d-none d-md-table-cell" style="width: 15%;">Параметри</th>
+                    <th class = "text-center" style="width: 15%;">Кількість</th>
+                    <th class = "text-center d-none d-sm-table-cell col-1">Ціна</th>
+                    <th class = "text-center" style="width: 19%;">Сума</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,7 +77,7 @@
                     <td></td>
                     <td class = "d-none d-md-table-cell"></td>
                     <td class = "d-none d-md-table-cell"></td>
-                    <td class="text-end fw-bold" colspan="2">ВСЕГО:</td>
+                    <td class="text-end fw-bold" colspan="2">ВСЬОГО:</td>
                     <td class="text-center fw-bold">{{number_format($doc->sum(), 2, ',', ' ')}} грн</td>
                 </tr>
                 </tfoot>

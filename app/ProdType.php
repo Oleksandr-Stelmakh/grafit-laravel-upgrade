@@ -18,7 +18,7 @@ class ProdType extends Model
         $icon = $this->icon ?? '';
 
         $map = [
-            // 📄 Документы / списки
+            //  Документы / списки
             'glyphicon-list-alt' => 'bi-card-list',
             'glyphicon-book' => 'bi-book',
             'glyphicon-picture' => 'bi-image',

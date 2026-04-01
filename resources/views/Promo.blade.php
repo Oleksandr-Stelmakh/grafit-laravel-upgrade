@@ -22,12 +22,13 @@
     <div class="container-fluid">
         <div class = "row">
             <div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-10 offset-1">
-                <h3>Напишите нам</h3>
+                <h3>Напишіть нам</h3>
                 {!! Form::open(['route' => 'promo.sendMessage', 'class' => '']) !!}
-                    {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Ваше имя', 'required']) }}
+                 @csrf
+                    {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Ваше ім\'я', 'required']) }}
                     {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'E-mail', 'required']) }}
-                    {{ Form::text('message', '', ['class' => 'form-control', 'placeholder' => 'Текст сообщения', 'required']) }}
-                    {{ Form::submit('Отправить', ['class' => 'form-control btn btn-primary w-100']) }}
+                    {{ Form::text('message', '', ['class' => 'form-control', 'placeholder' => 'Текст повідомлення', 'required']) }}
+                    {{ Form::submit('Надіслати', ['class' => 'form-control btn btn-primary btn-secondary w-100']) }}
                 {!! Form::close() !!}
             </div>
         </div>

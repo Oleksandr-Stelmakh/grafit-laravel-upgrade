@@ -38,7 +38,7 @@
                         @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('login*') ? 'active' : '' }}" href="{{ route('login') }}">
-                                Login
+                              Логін
                             </a>
                         </li>
                         @endif
@@ -46,7 +46,7 @@
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('register*') ? 'active' : '' }}" href="{{ route('register') }}">
-                                Register
+                                Зареєструватися
                             </a>
                         </li>
                         @endif
@@ -63,7 +63,7 @@
                                  <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Вийти
                                  </a>
                              </li>
                            </ul>

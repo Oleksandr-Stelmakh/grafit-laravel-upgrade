@@ -17,7 +17,7 @@ class PromoController extends Controller
 
     public function sendMessage(Request $request)
     {
-        //  dd('Я тут!');
+       
         session()->forget('flash_notification');
         
         $message = new Message;
@@ -25,12 +25,11 @@ class PromoController extends Controller
         $message->email = $request['email'];
         $message->message= $request['message'];
         if($message->save())
-            // flash()->overlay('Ваше сообщение отправлено!', 'Спасибо!');
-            // flash('Спасибо! Ваше сообщение отправлено!')->success();
-            return redirect()->back()->with('success', 'Спасибо! Ваше сообщение отправлено!');
+            
+            return redirect()->back()->with('success', 'Дякую! Ваше повідомлення надіслано!');
         else
-            // flash('Ошибка! Сообщение не отправлено!')->error()->important();
-            return redirect()->back()->with('error', 'Ошибка! Сообщение не отправлено!');
+            
+            return redirect()->back()->with('error', 'Помилка! Повідомлення не надіслано!');
 
 
         return back();

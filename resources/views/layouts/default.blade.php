@@ -53,17 +53,17 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('invoices*') ? 'active' : '' }}" href="/invoices">
-                        Мои Счета
+                        Мої Рахунки
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('productions*') ? 'active' : '' }}" href="/productions">
-                        Моя Продукция
+                        Моя Продукція
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('constructor*') ? 'active' : '' }}" href="/constructor">
-                        Конструктор цен
+                       Конструктор цін
                     </a>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
                 @if(Auth::check())
                 <li class="nav-item"><a class="nav-link" href="/home">{{Auth::user()->name}}</a></li>
                 @else
-                <li class="nav-item"><a class="nav-link" href="/login">Войти</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Увійти</a></li>
                 @endif
             </ul>
         </div>

@@ -5,14 +5,14 @@
     <div class="container">
         <div class = "row">
             <div class = "col-lg-6 col-md-6 col-sm-5">
-                <h2 class="mt-3">Моя продукция</h2>
+                <h2 class="mt-3">Моя продукція</h2>
             </div>
             <div class = "col-lg-6 col-md-6 col-sm-7">
                 {!! Form::open(['route' => 'productions', 'method' => 'get']) !!}
                 <div class="input-group mt-3">
-                    <input type="text" class="form-control" name = "search" placeholder="Поиск: код формы, № формы или наименование" value="{{request()->input('search')}}">
+                    <input type="text" class="form-control" name = "search" placeholder="Пошук: код форми, № форми або найменування" value="{{request()->input('search')}}">
                     <span class="px-2">
-                        <button class="btn btn-secondary" type="submit">Найти</button>
+                        <button class="btn btn-secondary" type="submit">Знайти</button>
                     </span>
                 </div>
                 {!! Form::close() !!}
@@ -23,10 +23,10 @@
             <table class = "table table-hover table-striped">
                 <thead>
                 <tr>
-                    <th class = "text-center">Код формы</th>
-                    <th class = "text-center">Наименование</th>
-                    <th class = "text-center d-none d-md-table-cell">№ формы</th>
-                    <th class = "text-center d-none d-md-table-cell">Параметры</th>
+                    <th class = "text-center">Код форми</th>
+                    <th class = "text-center">Найменування</th>
+                    <th class = "text-center d-none d-md-table-cell">№ форми</th>
+                    <th class = "text-center d-none d-md-table-cell">Параметри</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -73,11 +73,6 @@
             </table>
         </div>
 
-        <!--div class="text-left">
-            <i id="text-total-productions"></i>
-            <button id = "btn-yet-productions" class="btn btn-primary btn-yet">Еще...
-            </button>
-        </div-->
     </div>
 
 @endsection

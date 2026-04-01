@@ -23,7 +23,7 @@ class PriceDoc extends Model
         if($price_str)
             return $price_str->price;
         else{
-            $error_str = "Ошибка при определении цены материала (id: " . $id_paper_type . ")";
+            $error_str = "Помилка визначення ціни матеріалу (id: " . $id_paper_type . ")";
             return 9999999;
         }
     }
@@ -42,7 +42,7 @@ class PriceDoc extends Model
         if($price_str)
             return $price_str->price;
         else{
-            $error_str = "Ошибка при определении цены технологической операции (id: " . $id_operation . ")";
+            $error_str = "Помилка визначення ціни технологічної операції (id: " . $id_operation . ")";
             return 9999999;
         }
     }

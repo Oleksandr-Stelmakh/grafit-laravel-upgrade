@@ -60,7 +60,7 @@ class PriceManager
         // name, fullname, params
         $this->name = "Бланк";
         $this->params = $this->format->name;
-        $this->params .= $this->numering ? ($this->params ? ", " : "") . "с нумерацией" : "";
+        $this->params .= $this->numering ? ($this->params ? ", " : "") . "з нумерацією" : "";
         $this->full_name = $this->name . " (" . $this->params . "), " . $this->paper_type->name;
 
         return $this->full_name;
@@ -83,8 +83,8 @@ class PriceManager
         $this->name = "Журнал";
         $this->params = ($this->format->numA4==1 ? "":$this->format->name);
         $this->params .= ($this->params ? ", " : "") . $this->num_sheets . "л";
-        $this->params .= $this->stitch ? ($this->params ? ", " : "") . "прошитый" : "";
-        $this->params .= $this->numering ? ($this->params ? ", " : "") . "с нумерацией" : "";
+        $this->params .= $this->stitch ? ($this->params ? ", " : "") . "прошитий" : "";
+        $this->params .= $this->numering ? ($this->params ? ", " : "") . "з нумерацією" : "";
         $this->params .= $this->cover_type->id==config("app.default_id_cover_type") ? "" : ($this->params ? ", " : "") . $this->cover_type->name . " обл.";
         $this->full_name = $this->name . " (" . $this->params . "), " . $this->paper_type->name;
 
@@ -99,7 +99,7 @@ class PriceManager
         elseif ($arr['prod_type'] == config('app.id_prod_type_journal'))
             return $this->setParamsJournal($arr);
         else {
-            $this->last_error = "Непредусмотренный вид продукции";
+            $this->last_error = "Непередбачений вид продукції";
             return "";
         }
     }
@@ -109,7 +109,7 @@ class PriceManager
     {
         $this->priceDoc = PriceDoc::orderBy('date_doc', 'desc')->first();
         if(is_null($this->priceDoc)) {
-            $this->last_error = "Не найден актуальный прайс";
+            $this->last_error = "Не знайден актуальний прайс";
             return null;
         }
 
@@ -147,35 +147,35 @@ class PriceManager
 
         // проверка на минимальный тираж
         if($this->num == 0) {
-            $this->last_error = "Не задан тираж";
+            $this->last_error = "Не заданий тираж";
             return 0;
 
         } elseif($this->format->numA3 > 0){
             if($this->num < config('app.forms_min_circulationA3')/$this->format->numA3){
-                $this->last_error = "Недопустимый тираж (минимальный - " . (config('app.forms_min_circulationA3')/$this->format->numA3) . " " . $this->format->name . ")";
+                $this->last_error = "Неприпустимий тираж (мінімальний - " . (config('app.forms_min_circulationA3')/$this->format->numA3) . " " . $this->format->name . ")";
                 return 0;
             }
 
         } elseif($this->format->numA4 > 0){
             if($this->num < config('app.forms_min_circulationA4')/$this->format->numA4) {
-                $this->last_error = "Недопустимый тираж (минимальный - " . (config('app.forms_min_circulationA4') / $this->format->numA4) . " " . $this->format->name . ")";
+                $this->last_error = "Неприпустимий тираж (мінімальний - " . (config('app.forms_min_circulationA4') / $this->format->numA4) . " " . $this->format->name . ")";
                 return 0;
             }
         }
 
-        $this->addPriceMaterial('Бумага А3', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format['numA3']*2);
-        $this->addPriceMaterial('Бумага А4', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format['numA4']);
+        $this->addPriceMaterial('Папір А3', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format['numA3']*2);
+        $this->addPriceMaterial('Папір А4', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format['numA4']);
 
-        $this->addPriceOperation('Тиражирование А3', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3*$this->format->numSides);
-        $this->addPriceOperation('Тиражирование А4', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format['numA4'],1))*$this->format->numA4*$this->format->numSides);
-        $this->addPriceOperation('Порезка', $this->priceDoc->getPriceOperation(config('app.id_operation_cutting_perform'), 1)*$this->format->coefCut);
+        $this->addPriceOperation('Тиражування А3', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3*$this->format->numSides);
+        $this->addPriceOperation('Тиражування А4', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format['numA4'],1))*$this->format->numA4*$this->format->numSides);
+        $this->addPriceOperation('Порізка', $this->priceDoc->getPriceOperation(config('app.id_operation_cutting_perform'), 1)*$this->format->coefCut);
 
         if ($this->numering){
             if ($this->format->numA3 > 0) {
-                $this->last_error = "Нумерация для формата А3 не предусмотрена";
+                $this->last_error = "Нумерація для формата А3 не передбачена";
                 return 0;
             }
-            $this->addPriceOperation('Нумерация', $this->priceDoc->getPriceOperation(config('app.id_operation_numering'), 1)*$this->format->numA4);
+            $this->addPriceOperation('Нумерація', $this->priceDoc->getPriceOperation(config('app.id_operation_numering'), 1)*$this->format->numA4);
         }
 
         // суммирование статей и сбивание лога
@@ -209,49 +209,49 @@ class PriceManager
 
         // проверка на минимальный тираж
         if($this->num == 0) {
-            $this->last_error = "Не задан тираж";
+            $this->last_error = "Не заданий тираж";
             return 0;
         }
 
         // обложка
         if($this->cover_type->hardCover){
-            $this->addPriceOperation('Твердый переплет А3 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_hard_cover'), 1)*$this->format->numA3*1.3);
-            $this->addPriceOperation('Твердый переплет А4 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_hard_cover'), 1)*$this->format->numA4);
-            $this->addPriceOperation('Тиражирование А3 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3);
-            $this->addPriceOperation('Тиражирование А4 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format->numA4,1))*$this->format->numA4);
+            $this->addPriceOperation('Тверда обкладинка А3 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_hard_cover'), 1)*$this->format->numA3*1.3);
+            $this->addPriceOperation('Твердий переплет А4 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_hard_cover'), 1)*$this->format->numA4);
+            $this->addPriceOperation('Тиражування А3 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3);
+            $this->addPriceOperation('Тиражування А4 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format->numA4,1))*$this->format->numA4);
         } else{
-            $this->addPriceMaterial('Бумага А3 (обложка)', $this->priceDoc->getPriceMaterial($this->cover_type->id_paper_type)*2*$this->format->numA3*2);
-            $this->addPriceMaterial('Бумага А4 (обложка)', $this->priceDoc->getPriceMaterial($this->cover_type->id_paper_type)*$this->format->numA4*2);
-            $this->addPriceOperation('Тиражирование А3 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3);
-            $this->addPriceOperation('Тиражирование А4 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format->numA4,1))*$this->format->numA4);
-            $this->addPriceOperation('Обклейка торца', $this->priceDoc->getPriceOperation(config('app.id_operation_endface_gluing'), 1));
+            $this->addPriceMaterial('Папір А3 (обкладинка)', $this->priceDoc->getPriceMaterial($this->cover_type->id_paper_type)*2*$this->format->numA3*2);
+            $this->addPriceMaterial('Папір А4 (обкладинка)', $this->priceDoc->getPriceMaterial($this->cover_type->id_paper_type)*$this->format->numA4*2);
+            $this->addPriceOperation('Тиражування А3 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*min($this->format->numA3,1))*$this->format->numA3);
+            $this->addPriceOperation('Тиражування А4 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*min($this->format->numA4,1))*$this->format->numA4);
+            $this->addPriceOperation('Обклеювання торця', $this->priceDoc->getPriceOperation(config('app.id_operation_endface_gluing'), 1));
         }
 
         if($this->cover_type->laminate){
-            $this->addPriceOperation('Ламинация А3 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_lamination'), 1)*$this->format->numA3*4);
-            $this->addPriceOperation('Ламинация А4 (обложка)', $this->priceDoc->getPriceOperation(config('app.id_operation_lamination'), 1)*$this->format->numA4*2);
+            $this->addPriceOperation('Ламінація А3 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_lamination'), 1)*$this->format->numA3*4);
+            $this->addPriceOperation('Ламінація А4 (обкладинка)', $this->priceDoc->getPriceOperation(config('app.id_operation_lamination'), 1)*$this->format->numA4*2);
         }
 
         // тело
-        $this->addPriceMaterial('Бумага А3 (тело)', $this->priceDoc->getPriceMaterial($this->paper_type->id)*2*$this->format->numA3*$this->num_sheets);
-        $this->addPriceMaterial('Бумага А4 (тело)', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format->numA4*$this->num_sheets);
-        $this->addPriceOperation('Тиражирование А3 (тело)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*$this->num_sheets*min($this->format->numA3,1)*$this->format->numSides)*$this->format->numA3*$this->num_sheets*$this->format->numSides);
-        $this->addPriceOperation('Тиражирование А4 (тело)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*$this->num_sheets*min($this->format->numA4,1)*$this->format->numSides)*$this->format->numA4*$this->num_sheets*$this->format->numSides);
+        $this->addPriceMaterial('Папір А3 (тіло)', $this->priceDoc->getPriceMaterial($this->paper_type->id)*2*$this->format->numA3*$this->num_sheets);
+        $this->addPriceMaterial('Папір А4 (тіло)', $this->priceDoc->getPriceMaterial($this->paper_type->id)*$this->format->numA4*$this->num_sheets);
+        $this->addPriceOperation('Тиражування А3 (тіло)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA3'), $this->num*$this->num_sheets*min($this->format->numA3,1)*$this->format->numSides)*$this->format->numA3*$this->num_sheets*$this->format->numSides);
+        $this->addPriceOperation('Тиражування А4 (тіло)', $this->priceDoc->getPriceOperation(config('app.id_operation_replicationA4'), $this->num*$this->num_sheets*min($this->format->numA4,1)*$this->format->numSides)*$this->format->numA4*$this->num_sheets*$this->format->numSides);
 
         // прочие работы
-        $this->addPriceOperation('Шитье скобами', $this->priceDoc->getPriceOperation(config('app.id_operation_staplering'), 1)*2);
-        $this->addPriceOperation('Порезка', $this->priceDoc->getPriceOperation(config('app.id_operation_cutting'), 1));
+        $this->addPriceOperation('Шиття скобами', $this->priceDoc->getPriceOperation(config('app.id_operation_staplering'), 1)*2);
+        $this->addPriceOperation('Порізка', $this->priceDoc->getPriceOperation(config('app.id_operation_cutting'), 1));
 
         if($this->stitch){
-            $this->addPriceOperation('Прошивка ниткой', $this->priceDoc->getPriceOperation(config('app.id_operation_stitching'), 1));
+            $this->addPriceOperation('Прошивка ниткою', $this->priceDoc->getPriceOperation(config('app.id_operation_stitching'), 1));
         }
 
         if($this->numering){
             if ($this->format->numA3 >0) {
-                $this->last_error = "Нумерация для формата А3 не предусмотрена";
+                $this->last_error = "Нумерація для формату А3 не передбачена";
                 return 0;
             }
-            $this->addPriceOperation('Нумерация листов', $this->priceDoc->getPriceOperation(config('app.id_operation_numering'), 1)*$this->num_sheets*$this->format->numA4);
+            $this->addPriceOperation('Нумерація листів', $this->priceDoc->getPriceOperation(config('app.id_operation_numering'), 1)*$this->num_sheets*$this->format->numA4);
         }
 
         // суммирование статей и сбивание лога
@@ -280,7 +280,7 @@ class PriceManager
         elseif ($this->prod_type->id == config('app.id_prod_type_journal'))
             return $this->CalculateJournal($arr);
         else
-            $this->last_error = "Для указанного вида продукции не указан алгоритм расчета цены";
+            $this->last_error = "Для зазначеного виду продукції не вказано алгоритму розрахунку ціни";
     }
 
     /***************************/

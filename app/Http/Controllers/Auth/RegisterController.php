@@ -3,7 +3,6 @@
 namespace Grafit\Http\Controllers\Auth;
 
 use Grafit\Http\Controllers\Controller;
-// use App\Models\User;
 use Grafit\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;

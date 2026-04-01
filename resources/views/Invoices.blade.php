@@ -4,14 +4,14 @@
     <div class="container">
         <div class = "row justify-content-center">
             <div class = "col-lg-6 col-md-6 col-sm-5">
-                <h2 class="mt-3">Мои счета</h2>
+                <h2 class="mt-3">Мої рахунки</h2>
             </div>
             <div class = "col-lg-6 col-md-6 col-sm-7">
                 <form method = "get" action = "">
                     <div class="input-group mt-3">
-                        <input id = "search" type="text" class="form-control" name = "search" placeholder="Номер счета или наименование организации" value="{{request()->input('search')}}">
+                        <input id = "search" type="text" class="form-control" name = "search" placeholder="Номер рахунку або найменування організації" value="{{request()->input('search')}}">
                         <span class="px-2">
-        		           <button class="btn btn-secondary" type="submit">Найти</button>
+        		           <button class="btn btn-secondary" type="submit">Знайти</button>
       		            </span>
                     </div>
                 </form>
@@ -23,16 +23,16 @@
                 <thead>
                 <tr>
                     <th class = "text-center" width = 15%><strong>Дата</strong></th>
-                    <th class = "text-center" width = 12%><strong>№ заказа</strong></th>
-                    <th class = "text-center"><strong>Плательщик</strong></th>
-                    <th class = "text-center" width = 20%><strong>Сумма</strong></th>
+                    <th class = "text-center" width = 12%><strong>№ замовлення</strong></th>
+                    <th class = "text-center"><strong>Платник</strong></th>
+                    <th class = "text-center" width = 20%><strong>Сума</strong></th>
                     <th class = "text-center d-none d-md-table-cell" width = 30%><strong>Статус</strong></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <td colspan="5">
-                        <a href="{{ route('invoices.export') }}">Экспорт</a>
+                        <a href="{{ route('invoices.export') }}">Експорт</a>
                         {{ $docs->appends(array('search' => request()->input('search')))->links() }}
                     </td>
                 </tr>

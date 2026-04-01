@@ -96,11 +96,11 @@ class Production extends Model
         foreach($invoices_str as $str){
             $params[0][$str->id_paper_type] = $str->paperType->name ?? "";
             if($str->num_sheets)
-                $params[1][$str->num_sheets] = $str->num_sheets."л";
+                $params[1][$str->num_sheets] = $str->num_sheets."арк";
             if($str->stitch)
-                $params[2][$str->stitch] = "прошитый";
+                $params[2][$str->stitch] = "прошитий";
             if($str->id_cover_type)
-                $params[3][$str->id_cover_type] = $str->coverType->name ?? "" . " обл.";
+                $params[3][$str->id_cover_type] = $str->coverType->name ?? "" . " обк.";
             if($str->num_pages)
                 $params[4][$str->num_pages] = $str->num_pages."стор";
         }

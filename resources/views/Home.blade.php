@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Приладова панель') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Ви увійшли в систему!') }}
                 </div>
             </div>
         </div>

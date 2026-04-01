@@ -45,11 +45,11 @@ class InvoiceStr extends Model
     public function params(){
         $str_params = $this->paperType->name;
         if($this->num_sheets)
-            $str_params .= ", ".$this->num_sheets."л";
+            $str_params .= ", ".$this->num_sheets."арк";
         if($this->stitch)
-            $str_params .= ", прошитый";
+            $str_params .= ", прошитий";
         if($this->id_cover_type)
-            $str_params .= ", ".$this->coverType->name." обл.";
+            $str_params .= ", ".$this->coverType->name." обк.";
         if($this->num_pages)
             $str_params .= ", ".$this->num_pages."стор";
 

@@ -274,9 +274,9 @@ body {
 }
 
 /* чтобы не было серого hover от bootstrap */
-.carousel-buttons .btn:hover {
+/* .carousel-buttons .btn:hover {
    background-color: dodgerblue;
-}
+} */
 
 
 /* .form-check-input { как вариант для чекбокса нумерации — пока отключаем

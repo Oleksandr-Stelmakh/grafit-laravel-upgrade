@@ -73,6 +73,7 @@ class RegisterController extends Controller
     }
     protected function redirectTo()
     {
-      return '/invoices';
+    //   return '/invoices';
+      return '/home';
     }
 }

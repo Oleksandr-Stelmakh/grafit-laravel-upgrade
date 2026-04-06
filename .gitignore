@@ -6,8 +6,9 @@
 /storage/*.key
 /vendor
 /.idea
-.vscode/*
+.vscode/
 /.vagrant
+/public/mix-manifest.json
 Homestead.json
 Homestead.yaml
 npm-debug.log

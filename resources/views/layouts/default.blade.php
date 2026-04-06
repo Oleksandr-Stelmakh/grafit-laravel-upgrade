@@ -111,11 +111,10 @@
 
 <div id="footer">
     <div class="container">
-        <p class="text-center">
+        <p class="text-center mt-2">
             <b>{{config('app.name')}} {{config('firm.birth_year')}} - {{date('Y')}}</b>
             <br/>{{config('firm.email')}}
             <br/>{{config('firm.phone1')}} {{config('firm.contact1')}}
-            <br/>{{config('firm.phone2')}} {{config('firm.contact2')}}
             <br/>{{config('firm.address')}}
         </p>
     </div>

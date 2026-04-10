@@ -95,16 +95,22 @@
                      </div>
 
                      {{-- Скидка и кнопка--}}
-                     <div class="row mb-3 calcbtn-group" id="gr_discount">
-                         {{ Form::label('discount', 'Ваша знижка', ['class' => 'col-md-4 col-3  col-form-label']) }}
-                         <div class="col-md-2 col-3">
-                             {{ Form::select('discount', $discounts, null, ['class' => 'form-select']) }}
-                         </div>
+                     <div class="row mb-4 align-items-center justify-content-center calcbtn-group g-3 text-center" id="gr_discount">    
+                          {{-- label --}}
+                          <div class="col-12 col-md-4">
+                             {{ Form::label('discount', 'Ваша знижка', ['class' => 'form-label mb-0 fw-semibold']) }} 
+                          </div>
 
-                         <div class="col-6">
-                             {{ Form::button('Розрахувати ціну', ['class' => 'btn btn-secondary w-100 btn-calcprice']) }}
-                         </div>
-                     </div>
+                          {{-- select --}}
+                          <div class="col-12 col-md-4 col-lg-2 col-lg-3 col-xl-2">  
+                             {{ Form::select('discount', $discounts, null, ['class' => 'form-select text-center']) }}
+                          </div>
+
+                          {{-- button --}}
+                          <div class="col-12 col-md-6 col-lg-5 col-xl-4">  
+                             {{ Form::button('Розрахувати ціну', ['class' => 'btn btn-secondary w-100 btn-calcprice py-2']) }}   
+                          </div>
+                      </div>
 
                      {!! Form::close() !!}
                     </div>
